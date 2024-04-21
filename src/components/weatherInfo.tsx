@@ -7,26 +7,27 @@ interface Props {
   degree: number;
   status: string;
   heighst: number;
-  lowest: string;
+  lowest: number;
 }
 
-const WeatherInfo = () => {
+const WeatherInfo: React.FC<Props> = Props => {
+  const {city, degree, heighst, lowest, status} = Props;
   return (
     <View style={styles.container}>
-      <Text style={styles.city}>Kabul</Text>
+      <Text style={styles.city}>{city}</Text>
       <View style={styles.degree}>
-        <Text style={styles.degreeText}>19</Text>
-        <Text style={styles.degreeText}>&#x2022;</Text>
+        <Text style={styles.degreeText}>{degree}</Text>
+        <Text style={[styles.degreeText, styles.dot]}>&#x2022;</Text>
       </View>
-      <Text style={styles.status}>Mostly Clear</Text>
+      <Text style={styles.status}>{status}</Text>
       <View style={styles.info}>
         <View style={styles.grid}>
-          <Text style={styles.text}>H:24</Text>
-          <Text style={styles.text}>&#x2022;</Text>
+          <Text style={styles.text}>H:{heighst}</Text>
+          <Text style={[styles.text, styles.smallDot]}>&#x2022;</Text>
         </View>
         <View style={styles.grid}>
-          <Text style={styles.text}>L:24</Text>
-          <Text style={styles.text}>&#x2022;</Text>
+          <Text style={styles.text}>L:{lowest}</Text>
+          <Text style={[styles.text, styles.smallDot]}>&#x2022;</Text>
         </View>
       </View>
     </View>
@@ -42,15 +43,16 @@ const styles = StyleSheet.create({
     marginTop: screenWidth * 0.1,
   },
   city: {
-    fontSize: 34,
+    fontSize: screenWidth * 0.1,
     color: 'white',
-    fontWeight: '300',
+    fontWeight: '400',
   },
   degree: {
     flexDirection: 'row',
+    marginVertical: screenWidth * -0.03,
   },
   degreeText: {
-    fontSize: 96,
+    fontSize: screenWidth * 0.25,
     fontWeight: '200',
     color: 'white',
   },
@@ -69,5 +71,15 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: '500',
     fontSize: screenWidth * 0.05,
+  },
+  dot: {
+    position: 'absolute',
+    right: screenWidth * -0.06,
+    top: screenWidth * -0.06,
+  },
+  smallDot: {
+    position: 'absolute',
+    top: screenWidth * -0.009,
+    left: screenWidth * 0.09,
   },
 });
