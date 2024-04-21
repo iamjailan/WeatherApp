@@ -17,8 +17,7 @@ interface Props {
   degree: number;
 }
 
-const date = new Date().getHours();
-console.log(date);
+const date = new Date().getDay();
 
 const WeatherCard: React.FC<Props> = Props => {
   const {degree, hours, status, time} = Props;
