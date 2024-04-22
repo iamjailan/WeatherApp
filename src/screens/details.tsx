@@ -1,50 +1,54 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import AirQuality from '../components/airQuality';
 import {screenWidth} from '../helper/helper';
 import DetailsCard from '../components/card';
 import BackButton from '../components/backButton';
+import DetailsWeatherCard from '../components/detailsWeatherCard';
 
 const Details = ({navigation}: any) => {
   return (
-    <LinearGradient colors={['#45278B', '#2E335A']} style={styles.container}>
-      <BackButton navigate={navigation} />
-      <AirQuality />
-      <View style={styles.cards}>
-        <DetailsCard
-          title="Visibility"
-          text={'8 km'}
-          article="Similar to what you feeling suring Winter."
-        />
-        <DetailsCard
-          title="UV INDEX"
-          text={'4          Modeate'}
-          isTrue={true}
-          article=""
-        />
-        <DetailsCard
-          title="Feel Like"
-          text={19}
-          article="Similar to what you feeling suring Winter."
-        />
-        <DetailsCard
-          title="Humadity"
-          text={`90%`}
-          article="The dew point is 17 right now."
-        />
-        <DetailsCard
-          title="Rainfull"
-          text={'1.8 mm in the last hours'}
-          article="1.22 mm expected in next 24 hours."
-        />
-        <DetailsCard
-          title="Sunrise"
-          text={'5:20 AM'}
-          article="Sunset: 7:58 PM"
-        />
-      </View>
-    </LinearGradient>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <LinearGradient colors={['#45278B', '#2E335A']} style={styles.container}>
+        <BackButton navigate={navigation} />
+        <DetailsWeatherCard />
+        <AirQuality />
+        <View style={styles.cards}>
+          <DetailsCard
+            title="Visibility"
+            text={'8 km'}
+            article="Similar to what you feeling suring Winter."
+          />
+          <DetailsCard
+            title="UV INDEX"
+            text={'4          Modeate'}
+            isTrue={true}
+            article=""
+          />
+          <DetailsCard
+            title="Feel Like"
+            text={19}
+            article="Similar to what you feeling suring Winter."
+          />
+          <DetailsCard
+            title="Humadity"
+            text={`90%`}
+            article="The dew point is 17 right now."
+          />
+          <DetailsCard
+            title="Rainfull"
+            text={'1.8 mm in the last hours'}
+            article="1.22 mm expected in next 24 hours."
+          />
+          <DetailsCard
+            title="Sunrise"
+            text={'5:20 AM'}
+            article="Sunset: 7:58 PM"
+          />
+        </View>
+      </LinearGradient>
+    </ScrollView>
   );
 };
 

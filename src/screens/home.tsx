@@ -47,10 +47,10 @@ const Home = ({navigation}: any) => {
           style={styles.forcast}>
           <View style={styles.forcastBtn}>
             <TouchableNativeFeedback onPress={() => handleHoursForcastTime()}>
-              <Text>Hourly Forcast</Text>
+              <Text style={[isHours && {color: 'white'}]}>Hourly Forcast</Text>
             </TouchableNativeFeedback>
             <TouchableNativeFeedback onPress={() => handleWeeklyForcastTime()}>
-              <Text>Weekly Forcast</Text>
+              <Text style={[isWeekly && {color: 'white'}]}>Weekly Forcast</Text>
             </TouchableNativeFeedback>
           </View>
           {isHours ? (
