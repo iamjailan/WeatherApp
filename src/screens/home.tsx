@@ -110,7 +110,7 @@ const Home = ({navigation}: any) => {
                   source={require('../assets/add.png')}
                 />
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => dispatch(handleEmpty())}>
+              <TouchableOpacity onPress={() => navigation.navigate('menu')}>
                 <Image
                   style={styles.location}
                   source={require('../assets/menu.png')}
