@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors, screenWidth} from '../helper/helper';
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   title: {
-    color: colors.balckSecondary,
+    color: colors.blackSecondary,
   },
   text: {
     fontSize: screenWidth * 0.06,

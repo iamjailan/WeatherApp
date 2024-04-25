@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import React from 'react';
-import MainNavigator from './navigations';
+import MainNavigator from './navigation';
 
 const App = () => {
   return <MainNavigator />;

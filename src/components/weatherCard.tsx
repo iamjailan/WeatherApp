@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text} from 'react-native';
 import React from 'react';
 import {screenWidth} from '../helper/helper';
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,8 +16,6 @@ interface Props {
     | 'nightRain';
   degree: number;
 }
-
-const date = new Date().getDay();
 
 const WeatherCard: React.FC<Props> = Props => {
   const {degree, hours, status, time} = Props;

@@ -6,12 +6,12 @@ interface Props {
   city: string;
   degree: number;
   status: string;
-  heighst: number;
+  heights: number;
   lowest: number;
 }
 
 const WeatherInfo: React.FC<Props> = Props => {
-  const {city, degree, heighst, lowest, status} = Props;
+  const {city, degree, heights, lowest, status} = Props;
   return (
     <View style={styles.container}>
       <Text style={styles.city}>{city}</Text>
@@ -22,7 +22,7 @@ const WeatherInfo: React.FC<Props> = Props => {
       <Text style={styles.status}>{status}</Text>
       <View style={styles.info}>
         <View style={styles.grid}>
-          <Text style={styles.text}>H:{heighst}</Text>
+          <Text style={styles.text}>H:{heights}</Text>
           <Text style={[styles.text, styles.smallDot]}>&#x2022;</Text>
         </View>
         <View style={styles.grid}>

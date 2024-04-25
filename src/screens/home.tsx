@@ -18,11 +18,11 @@ import {data, dataDay} from '../helper/dummyData';
 const Home = ({navigation}: any) => {
   const [isWeekly, setIsWeekly] = useState(false);
   const [isHours, setIsHourly] = useState(true);
-  const handleWeeklyForcastTime = () => {
+  const handleWeeklyForecastTime = () => {
     setIsHourly(false);
     setIsWeekly(true);
   };
-  const handleHoursForcastTime = () => {
+  const handleHoursForecastTime = () => {
     setIsHourly(true);
     setIsWeekly(false);
   };
@@ -36,7 +36,7 @@ const Home = ({navigation}: any) => {
           <WeatherInfo
             city="Wardak"
             degree={12}
-            heighst={20}
+            heights={20}
             lowest={10}
             status="clear"
           />
@@ -44,13 +44,15 @@ const Home = ({navigation}: any) => {
         <Image style={styles.image} source={require('../assets/House.png')} />
         <LinearGradient
           colors={['rgba(54, 88, 177, .9)', 'rgba(193, 89, 236, 1.9)']}
-          style={styles.forcast}>
-          <View style={styles.forcastBtn}>
-            <TouchableNativeFeedback onPress={() => handleHoursForcastTime()}>
-              <Text style={[isHours && {color: 'white'}]}>Hourly Forcast</Text>
+          style={styles.forecast}>
+          <View style={styles.forecastBtn}>
+            <TouchableNativeFeedback onPress={() => handleHoursForecastTime()}>
+              <Text style={[isHours && {color: 'white'}]}>Hourly Forecast</Text>
             </TouchableNativeFeedback>
-            <TouchableNativeFeedback onPress={() => handleWeeklyForcastTime()}>
-              <Text style={[isWeekly && {color: 'white'}]}>Weekly Forcast</Text>
+            <TouchableNativeFeedback onPress={() => handleWeeklyForecastTime()}>
+              <Text style={[isWeekly && {color: 'white'}]}>
+                Weekly Forecast
+              </Text>
             </TouchableNativeFeedback>
           </View>
           {isHours ? (
@@ -92,12 +94,17 @@ const Home = ({navigation}: any) => {
           <ImageBackground
             style={styles.bottom}
             source={require('../assets/bottom.png')}>
-            <View style={styles.btns}>
+            <View style={styles.btn}>
               <Image
                 style={styles.location}
                 source={require('../assets/location.png')}
               />
-              <Image style={styles.add} source={require('../assets/add.png')} />
+              <TouchableOpacity onPress={() => navigation.navigate('addCity')}>
+                <Image
+                  style={styles.add}
+                  source={require('../assets/add.png')}
+                />
+              </TouchableOpacity>
               <Image
                 style={styles.location}
                 source={require('../assets/menu.png')}
@@ -125,7 +132,7 @@ const styles = StyleSheet.create({
     width: screenWidth * 1,
     zIndex: 1,
   },
-  forcast: {
+  forecast: {
     height: screenWidth * 0.8,
     width: screenWidth * 1,
     zIndex: 1,
@@ -138,7 +145,7 @@ const styles = StyleSheet.create({
     height: screenWidth * 0.27,
     marginBottom: screenWidth * -0.05,
   },
-  btns: {
+  btn: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: screenWidth * 1,
@@ -156,7 +163,7 @@ const styles = StyleSheet.create({
     marginTop: screenWidth * -0.05,
     borderRadius: screenWidth * 1,
   },
-  forcastBtn: {
+  forecastBtn: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: screenWidth * 0.025,

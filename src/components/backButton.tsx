@@ -24,7 +24,7 @@ const BackButton: React.FC<Props> = Props => {
           <Text style={styles.text}>Weather</Text>
         </View>
         <Image
-          style={styles.imageWeahter}
+          style={styles.imageWeather}
           source={require('../assets/rightMenu.png')}
         />
       </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: screenWidth * 0.03,
   },
-  imageWeahter: {
+  imageWeather: {
     height: screenWidth * 0.08,
     width: screenWidth * 0.08,
   },
