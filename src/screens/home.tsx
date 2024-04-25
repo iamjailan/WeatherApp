@@ -14,10 +14,15 @@ import {screenWidth} from '../helper/helper';
 import LinearGradient from 'react-native-linear-gradient';
 import WeatherCard from '../components/weatherCard';
 import {data, dataDay} from '../helper/dummyData';
+import {useDispatch, useSelector} from 'react-redux';
+import {handleEmpty, mainSelector} from '../store/reducer/main';
 
 const Home = ({navigation}: any) => {
   const [isWeekly, setIsWeekly] = useState(false);
   const [isHours, setIsHourly] = useState(true);
+  const {isLoading} = useSelector(mainSelector);
+  const dispatch = useDispatch();
+  console.log(isLoading);
   const handleWeeklyForecastTime = () => {
     setIsHourly(false);
     setIsWeekly(true);
@@ -105,10 +110,12 @@ const Home = ({navigation}: any) => {
                   source={require('../assets/add.png')}
                 />
               </TouchableOpacity>
-              <Image
-                style={styles.location}
-                source={require('../assets/menu.png')}
-              />
+              <TouchableOpacity onPress={() => dispatch(handleEmpty())}>
+                <Image
+                  style={styles.location}
+                  source={require('../assets/menu.png')}
+                />
+              </TouchableOpacity>
             </View>
           </ImageBackground>
         </LinearGradient>

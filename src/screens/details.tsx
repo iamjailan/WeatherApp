@@ -9,8 +9,8 @@ import DetailsWeatherCard from '../components/detailsWeatherCard';
 
 const Details = ({navigation}: any) => {
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <LinearGradient colors={['#45278B', '#2E335A']} style={styles.container}>
+    <LinearGradient colors={['#45278B', '#2E335A']} style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <BackButton navigate={navigation} />
         <DetailsWeatherCard />
         <AirQuality />
@@ -47,8 +47,8 @@ const Details = ({navigation}: any) => {
             article="Sunset: 7:58 PM"
           />
         </View>
-      </LinearGradient>
-    </ScrollView>
+      </ScrollView>
+    </LinearGradient>
   );
 };
 

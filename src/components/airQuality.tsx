@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: screenWidth * 0.03,
     borderWidth: screenWidth * 0.003,
     borderColor: colors.border,
+    marginVertical: screenWidth * 0.03,
   },
   title: {
     color: colors.blackSecondary,

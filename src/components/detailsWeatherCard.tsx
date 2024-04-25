@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: screenWidth * 0.002,
     borderColor: 'white',
     borderRadius: screenWidth * 0.04,
+    marginVertical: screenWidth * 0.03,
   },
   city: {
     fontSize: screenWidth * 0.08,
