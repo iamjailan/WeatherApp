@@ -1,38 +1,27 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../screens/home';
-import Details from '../screens/details';
-import AddCity from '../screens/addCity';
-import Menu from '../screens/menu';
+import MenuNavigator from './menu';
+import AppNavigator from './AppNavigator';
 
-const Stack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator();
 
 const MainNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="home">
-        <Stack.Screen
-          name="home"
-          component={Home}
+      <RootStack.Navigator initialRouteName="appNavigator">
+        <RootStack.Screen
+          name="appNavigator"
+          component={AppNavigator}
           options={{headerShown: false}}
         />
-        <Stack.Screen
-          name="details"
-          component={Details}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="addCity"
-          component={AddCity}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
+
+        <RootStack.Screen
           name="menu"
-          component={Menu}
+          component={MenuNavigator}
           options={{headerShown: false}}
         />
-      </Stack.Navigator>
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };

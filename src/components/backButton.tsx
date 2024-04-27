@@ -4,10 +4,11 @@ import {screenWidth} from '../helper/helper';
 
 interface Props {
   navigate: any;
+  hideMenu?: boolean;
 }
 
 const BackButton: React.FC<Props> = Props => {
-  const {navigate} = Props;
+  const {navigate, hideMenu} = Props;
   const handleNavigate = () => {
     navigate.navigate('home');
   };
@@ -21,12 +22,17 @@ const BackButton: React.FC<Props> = Props => {
               source={require('../assets/arrow.png')}
             />
           </TouchableOpacity>
-          <Text style={styles.text}>Weather</Text>
+          <Text style={styles.text}>Back</Text>
         </View>
-        <Image
-          style={styles.imageWeather}
-          source={require('../assets/rightMenu.png')}
-        />
+
+        {!hideMenu && (
+          <TouchableOpacity onPress={() => navigate.navigate('menu')}>
+            <Image
+              style={styles.imageWeather}
+              source={require('../assets/rightMenu.png')}
+            />
+          </TouchableOpacity>
+        )}
       </View>
     </View>
   );
