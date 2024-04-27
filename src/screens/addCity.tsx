@@ -14,6 +14,7 @@ const AddCity = ({navigation}: any) => {
     } else {
       setCity('');
       setError(false);
+      navigation.navigate('home');
     }
   };
   if (error) {

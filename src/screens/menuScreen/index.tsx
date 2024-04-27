@@ -1,9 +1,17 @@
 import {ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
-import MenuCard from '../components/menuCard';
 import LinearGradient from 'react-native-linear-gradient';
-import BackButton from '../components/backButton';
-import {screenWidth} from '../helper/helper';
+import MenuCard from '../../components/menuCard';
+import BackButton from '../../components/backButton';
+import {screenWidth} from '../../helper/helper';
+
+const navigateData = [
+  {
+    id: 1,
+    navigateTo: 'about',
+    text: 'About',
+  },
+];
 
 const Menu = ({navigation}: any) => {
   return (
@@ -12,9 +20,17 @@ const Menu = ({navigation}: any) => {
       colors={['rgba(54, 88, 177, .9)', 'rgba(193, 89, 236, 1.9)']}>
       <BackButton hideMenu={true} navigate={navigation} />
       <ScrollView contentContainerStyle={styles.btn}>
-        <MenuCard />
-        <MenuCard />
-        <MenuCard />
+        {navigateData.map(btn => {
+          const {id, navigateTo, text} = btn;
+          return (
+            <MenuCard
+              key={id}
+              navigate={navigateTo}
+              navigation={navigation}
+              text={text}
+            />
+          );
+        })}
       </ScrollView>
     </LinearGradient>
   );

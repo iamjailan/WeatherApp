@@ -1,13 +1,22 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {screenWidth} from '../helper/helper';
 
-const MenuCard = () => {
+interface Props {
+  text: string;
+  navigate: string;
+  navigation: any;
+}
+
+const MenuCard: React.FC<Props> = Props => {
+  const {navigate, text, navigation} = Props;
   return (
-    <View style={styles.container}>
-      <Text>About</Text>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(navigate)}
+      style={styles.container}>
+      <Text>{text}</Text>
       <Text>View</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

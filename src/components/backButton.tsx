@@ -5,12 +5,13 @@ import {screenWidth} from '../helper/helper';
 interface Props {
   navigate: any;
   hideMenu?: boolean;
+  backOption?: string;
 }
 
 const BackButton: React.FC<Props> = Props => {
-  const {navigate, hideMenu} = Props;
+  const {navigate, hideMenu, backOption} = Props;
   const handleNavigate = () => {
-    navigate.navigate('home');
+    navigate.navigate(backOption ? backOption : 'home');
   };
   return (
     <View style={styles.container}>
@@ -42,7 +43,7 @@ export default BackButton;
 
 const styles = StyleSheet.create({
   container: {
-    padding: screenWidth * 0.02,
+    padding: screenWidth * 0.05,
   },
   parent: {
     flexDirection: 'row',
