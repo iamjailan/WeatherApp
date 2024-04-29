@@ -4,29 +4,29 @@ import {screenWidth} from '../helper/helper';
 
 interface Props {
   city: string;
-  degree: number;
-  status: string;
-  heights: number;
-  lowest: number;
+  degree: number | string;
+  status: string | number;
+  heights: number | string;
+  lowest: number | string;
 }
 
 const WeatherInfo: React.FC<Props> = Props => {
   const {city, degree, heights, lowest, status} = Props;
   return (
     <View style={styles.container}>
-      <Text style={styles.city}>{city}</Text>
+      <Text style={styles.city}>{city ? city : ''}</Text>
       <View style={styles.degree}>
-        <Text style={styles.degreeText}>{degree}</Text>
+        <Text style={styles.degreeText}>{degree ? degree : 0}</Text>
         <Text style={[styles.degreeText, styles.dot]}>&#x2022;</Text>
       </View>
-      <Text style={styles.status}>{status}</Text>
+      <Text style={styles.status}>{status ? status : ''}</Text>
       <View style={styles.info}>
         <View style={styles.grid}>
-          <Text style={styles.text}>H:{heights}</Text>
+          <Text style={styles.text}>H:{heights ? heights : ''}</Text>
           <Text style={[styles.text, styles.smallDot]}>&#x2022;</Text>
         </View>
         <View style={styles.grid}>
-          <Text style={styles.text}>L:{lowest}</Text>
+          <Text style={styles.text}>L:{lowest ? lowest : ''}</Text>
           <Text style={[styles.text, styles.smallDot]}>&#x2022;</Text>
         </View>
       </View>

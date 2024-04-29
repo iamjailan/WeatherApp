@@ -8,21 +8,24 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import WeatherInfo from '../components/weatherInfo';
 import {screenWidth} from '../helper/helper';
 import LinearGradient from 'react-native-linear-gradient';
 import WeatherCard from '../components/weatherCard';
 import {data, dataDay} from '../helper/dummyData';
 import {useDispatch, useSelector} from 'react-redux';
-import {handleEmpty, mainSelector} from '../store/reducer/main';
+import {handleGetCurrentWeather, weatherSelector} from '../store/reducer/main';
 
 const Home = ({navigation}: any) => {
   const [isWeekly, setIsWeekly] = useState(false);
   const [isHours, setIsHourly] = useState(true);
-  const {isLoading} = useSelector(mainSelector);
+  const {data: weatherData, error, isLoading} = useSelector(weatherSelector);
   const dispatch = useDispatch();
-  console.log(isLoading);
+
+  useEffect(() => {
+    dispatch(handleGetCurrentWeather() as any);
+  }, []);
   const handleWeeklyForecastTime = () => {
     setIsHourly(false);
     setIsWeekly(true);
@@ -31,6 +34,9 @@ const Home = ({navigation}: any) => {
     setIsHourly(true);
     setIsWeekly(false);
   };
+  const heightsDegree = weatherData?.main?.temp - 273.15;
+  const maxDegree = weatherData?.main?.temp_max - 273.15;
+  const lowestDegree = weatherData?.main?.temp_min - 273.15;
 
   return (
     <View style={styles.container}>
@@ -39,11 +45,11 @@ const Home = ({navigation}: any) => {
         source={require('../assets/bg.png')}>
         <TouchableOpacity onPress={() => navigation.navigate('details')}>
           <WeatherInfo
-            city="Wardak"
-            degree={12}
-            heights={20}
-            lowest={10}
-            status="clear"
+            city={weatherData?.name}
+            degree={heightsDegree.toFixed(0)}
+            heights={maxDegree.toFixed(0)}
+            lowest={lowestDegree.toFixed(0)}
+            status={weatherData?.weather[0]?.main}
           />
         </TouchableOpacity>
         <Image style={styles.image} source={require('../assets/House.png')} />

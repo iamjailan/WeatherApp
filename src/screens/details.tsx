@@ -1,18 +1,32 @@
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import AirQuality from '../components/airQuality';
 import {screenWidth} from '../helper/helper';
 import DetailsCard from '../components/card';
 import BackButton from '../components/backButton';
 import DetailsWeatherCard from '../components/detailsWeatherCard';
+import {useDispatch, useSelector} from 'react-redux';
+import {handleGetCurrentWeather, weatherSelector} from '../store/reducer/main';
 
 const Details = ({navigation}: any) => {
+  const {data: weatherData, error, isLoading} = useSelector(weatherSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(handleGetCurrentWeather() as any);
+  }, []);
+
+  const heightsDegree = weatherData?.main?.temp - 273.15;
   return (
     <LinearGradient colors={['#45278B', '#2E335A']} style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <BackButton navigate={navigation} />
-        <DetailsWeatherCard />
+        <DetailsWeatherCard
+          degree={heightsDegree.toFixed(0)}
+          province={weatherData?.name}
+          status={weatherData?.weather[0]?.description}
+        />
         <AirQuality />
         <View style={styles.cards}>
           <DetailsCard

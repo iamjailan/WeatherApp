@@ -2,14 +2,21 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {screenWidth} from '../helper/helper';
 
-const DetailsWeatherCard = () => {
+interface Props {
+  province: string;
+  degree: string;
+  status: string;
+}
+
+const DetailsWeatherCard: React.FC<Props> = Props => {
+  const {degree, province, status} = Props;
   return (
     <View style={styles.container}>
-      <Text style={styles.city}>Wardak</Text>
+      <Text style={styles.city}>{province}</Text>
       <View style={styles.box}>
-        <Text style={styles.text}>19</Text>
+        <Text style={styles.text}>{degree}</Text>
         <Text style={styles.text}>|</Text>
-        <Text style={styles.text}>Mostly Clear</Text>
+        <Text style={styles.text}>{status}</Text>
       </View>
     </View>
   );
